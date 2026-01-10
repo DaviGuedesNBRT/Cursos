@@ -19,6 +19,7 @@ print(f'Olá, {nome}!!! seu ano de nascimento é {2026-idade}')
 
 print(f"olá {nome}!! seua altura é {altura} metros")
 
+
 #conversão de float para int irá arredondar o numero para baixo!!
 #o int é inpreciso. para melhor precisão, ultiliza-se float
 conversao = int(altura)

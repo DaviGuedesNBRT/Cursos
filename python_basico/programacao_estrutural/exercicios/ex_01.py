@@ -1,3 +1,4 @@
+#exercicios
 #1. Faça um programa que leia um número inteiro e imprima-o.
 numero = int(input("digite um numero :"))
 print(numero)

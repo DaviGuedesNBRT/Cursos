@@ -1,5 +1,3 @@
-#recebendo dados do usuario atravez do terminal
-
 print("testes recebendo dados atravez do input")
 
 #declarando o tipo da variavel enquanto recebe o valor 

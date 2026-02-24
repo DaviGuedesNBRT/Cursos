@@ -25,7 +25,7 @@ for i in range(0,10):
 print("==================")
 
 #posso usar variaveis para definir a quantidade de loops
-loops = int(input("numeros de loops: "))
+loops = int(input("digite um numero que você quer saber o fatorial: "))
 #posso usar isso tambem para saber o valor de um numero fatorial ex: 19!
 soma = 0
 
@@ -37,14 +37,18 @@ print(f'a quandide de loops: {loops} me fatorial é :{soma}')
 
 print("==================")
 
-#tabela do jogo da velha funcional
 
-grid = [' _ ',' _ ',' _ ',' _ ',' _ ',' _ ',' _ ',' _ ',' _ ']
+#loop while 
 
-for index in range(0,9):
-    if index == 2 or index == 5 :
-        print(grid[index])
-        print(" ")
-    else:
-        print(grid[index], end="")
+numero = int(input("digite um numero maior que 100 :"))
 
+# a estrutura while é um if com repetiçao
+while numero < 100:
+    print("o numero digitado é menor que 100")
+    numero = int(input("digite um numero maior que 100 :"))
+
+    decisao = input('desejan interromper ? [S/N] :')
+    #posso quebrar a repetição usando brake
+
+    if decisao[0].upper() == "S" :
+        break

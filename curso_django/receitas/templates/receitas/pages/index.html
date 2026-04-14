@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+{% include 'receitas/partials/head.html' %}
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+    <header class="main-header-container">
+        <div class="main-header container">
+            <h1>
+                <a href="/" class="main-logo">
+                    <i class="fas fa-utensils main-logo-icon"></i>
+                    <span class="main-logo-text">Receitas {{ name}}</span>
+                </a>
+            </h1>
+        </div>
+    </header>
+
+    <div class="pesquisa" >
+        <input type="text" class="input-pesquisa" placeholder="Pesquisar receitas...">
+        <input type="submit" class="submit">
+    </div>
+    <div class="receitas">
+        <div class="receita">
+            <img src="" alt="">
+            <h2>Receita 1</h2>
+            <div class="info_receita">
+                <h5>autor</h5>
+                <h5>data e hora</h5>
+            </div>
+            <div class="categoria_receita">
+                <h5>categoria</h5>
+            </div>
+            <div class="descricao_recita">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <h3>By Davi Guedes</h3>
+    </footer>
+</body>
+</html>

@@ -2,47 +2,64 @@
 {% load static %}
 {% include 'receitas/partials/head.html' %}
 
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
-
 <body>
     <header class="main-header-container">
         <div class="main-header container">
             <h1>
                 <a href="/" class="main-logo">
                     <i class="fas fa-utensils main-logo-icon"></i>
-                    <span class="main-logo-text">Receitas {{ name}}</span>
+                    <span class="main-logo-text">Receitas {{ name }}</span>
                 </a>
             </h1>
         </div>
     </header>
 
-    <div class="pesquisa" >
-        <input type="text" class="input-pesquisa" placeholder="Pesquisar receitas...">
-        <input type="submit" class="submit">
-    </div>
-    <div class="receitas">
-        <div class="receita">
-            <div class="receita-imagem">
-                <h1>sei la </h1>
-            </div>
-            <img src="" alt="" >
-            <h2>Receita 1</h2>
-            <div class="info_receita">
-                <h5>autor</h5>
-                <h1></h1>
-                <h5>data e hora</h5>
-            </div>
-            <div class="categoria_receita">
-                <h5>categoria</h5>
-            </div>
-            <div class="descricao_recita">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
+    <main class="main">
+        <div class="pesquisa">
+            <form action="">
+                <input type="search" class="input-pesquisa" placeholder="Pesquisar receitas...">
+                <input type="submit" class="submit" value="Buscar">
+            </form>
+        </div>
+
+        <div class="receitas">
+            <div class="receita">
+                <div class="receita-imagem">
+                    <img src="{% static 'img/image.png' %}" alt="bolo de chocolate">
+                </div>
+                <div class="info_receita">
+                    <h2>Bolo de Chocolate Cremoso</h2>
+                    <div class="info-receita-container">
+                        <p><i class="fa-regular fa-user"></i> Davi Guedes</p>
+                        <p><i class="fa-regular fa-calendar"></i> 06/11/2006 às 13h45</p>
+                        <p><i class="fa-solid fa-layer-group"></i> Bolos</p>
+                    </div>
+                </div>
+                <div class="descricao-receitas">
+                    <p>
+                        Um bolo de chocolate fofinho e úmido, coberto com ganache cremoso. 
+                        Perfeito para aniversários e ocasiões especiais.
+                    </p>
+                </div>
+                <div class="info-receita-footer">
+                    <div class="info-adicionais">
+                        <h3><i class="fa-regular fa-clock"></i>Preparo</h3>
+                        <h4>1h</h4>
+                    </div>
+                    <div class="info-adicionais">
+                        <h3><i class="fa-solid fa-cookie-bite"></i>Porções</h3>
+                        <h4>10</h4>
+                    </div>
+                </div>
+                <a href="/receita/1" class="receita-btn">Ver Receita</a>
             </div>
         </div>
-    </div>
+    </main>
+
     <footer>
         <h3>By Davi Guedes</h3>
     </footer>

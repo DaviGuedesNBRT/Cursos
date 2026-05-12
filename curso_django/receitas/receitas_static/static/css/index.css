@@ -1,0 +1,91 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    font-size: 1.6rem;
+    background-color: rgb(202, 202, 202);
+}
+.container{
+    max-width: 144rem;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+.pesquisa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.input-pesquisa{
+    width: 30%;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem 0 0 0.5rem;
+    font-size: 1.6rem;
+}
+
+.submit{
+    padding: 1rem 2rem;
+    border: none;
+    margin-left: 1.6rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    background-color: #13141f;
+    color: aliceblue;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.main-logo{
+    font-size: 4rem;
+    color: aliceblue;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: row wrap;
+    width: fit-content;
+}
+
+.main-logo-icon{
+    margin-right: 0.5rem;
+}
+
+.main-logo-text{
+    font-weight: 700;
+}
+
+.main-header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color:#13141f;
+}
+
+.receitas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    height: 70rem;
+}
+.receita{
+    width: 22.5%;
+    height: 20rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    
+}
+
+.receita-imagem{
+    width: 5rem;
+    height: 5rem;
+    background-color: aqua;
+}

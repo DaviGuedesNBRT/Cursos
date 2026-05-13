@@ -119,5 +119,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [BASE_DIR / "base_static"] 
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media"
+
 # config para coletar os arquivos estáticos em um diretório específico para produção
 STATIC_ROOT = BASE_DIR / "StaticFiles"

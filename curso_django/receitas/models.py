@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class TbCategorias(models.Model):
+class tb_categorias(models.Model):
     cat_id = models.AutoField(primary_key=True)
     cat_nome = models.CharField(max_length=255)
 
@@ -9,7 +9,7 @@ class TbCategorias(models.Model):
         return self.cat_nome
 
 
-class TbUsuario(models.Model):
+class tb_suario(models.Model):
     usu_id = models.AutoField(primary_key=True)
     usu_nome = models.CharField(max_length=255)
     usu_email = models.EmailField(unique=True)
@@ -19,7 +19,7 @@ class TbUsuario(models.Model):
         return self.usu_nome
 
 
-class TbReceitas(models.Model):
+class tb_receitas(models.Model):
     rec_id = models.AutoField(primary_key=True)
     rec_nome = models.CharField(max_length=255)
     rec_descricao = models.TextField()
@@ -29,12 +29,12 @@ class TbReceitas(models.Model):
     rec_rendimento = models.IntegerField()
 
     rec_categoria = models.ForeignKey(
-        TbCategorias,
+        tb_categorias,
         on_delete=models.SET_NULL, null=True
     )
 
     rec_imagem = models.ImageField(
-        upload_to='receitas/receitas_static/imagens/'
+        upload_to='receitas/imagens/'
     )
 
     rec_data_criacao = models.DateTimeField(
@@ -42,7 +42,7 @@ class TbReceitas(models.Model):
     )
 
     rec_user_id = models.ForeignKey(
-        TbUsuario,
+        tb_suario,
         on_delete=models.SET_NULL, null=True
     )
 

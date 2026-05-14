@@ -1,0 +1,191 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    min-height: 100vh;
+    background-color: rgb(202, 202, 202);
+}
+
+.main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.painel {
+    width: 100%;
+    max-width: 50rem;
+    background: white;
+    border-radius: 2rem;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.1), 0 1rem 2rem rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 4rem;
+}
+
+.painel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.15);
+}
+
+.painel h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #333;
+    font-size: 2.8rem;
+    font-weight: 700;
+    background-clip: text;
+}
+
+.formulario {
+    width: 100%;
+}
+
+.formulario form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.formulario form label {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.formulario form input {
+    width: 100%;
+    padding: 1.2rem 1.6rem;
+    border: 2px solid #e1e5e9;
+    border-radius: 1rem;
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+    font-family: inherit;
+}
+
+.formulario form input:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.formulario form input:hover {
+    border-color: #c3cfe2;
+}
+
+.formulario form button {
+    width: 100%;
+    padding: 1.2rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 1rem;
+    color: white;
+    background-color: #333 ;
+    font-size: 1.6rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: inherit;
+}
+
+.formulario form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 1rem 2rem rgba(102, 126, 234, 0.3);
+}
+
+.formulario form button:active {
+    transform: translateY(0);
+}
+
+/* Estilo para mensagens de erro (adicione no HTML se necessário) */
+.errorlist {
+    list-style: none;
+    background-color: #fee;
+    border-left: 4px solid #e74c3c;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    color: #e74c3c;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .painel {
+        padding: 3rem 2rem;
+        max-width: 45rem;
+    }
+    
+    .painel h1 {
+        font-size: 2.4rem;
+        margin-bottom: 2rem;
+    }
+    
+    .formulario form input,
+    .formulario form button {
+        padding: 1rem 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main {
+        padding: 1rem;
+    }
+    
+    .painel {
+        padding: 2rem 1.5rem;
+    }
+    
+    .painel h1 {
+        font-size: 2rem;
+    }
+    
+    .formulario form label {
+        font-size: 1.2rem;
+    }
+    
+    .formulario form input {
+        padding: 0.8rem 1.2rem;
+        font-size: 1.4rem;
+    }
+}
+
+/* Efeito de loading para o botão (opcional) */
+.formulario form button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Animações suaves */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.painel {
+    animation: fadeIn 0.5s ease-out;
+}

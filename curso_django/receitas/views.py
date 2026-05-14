@@ -17,3 +17,9 @@ def receita(request, id):
         'id': id
     })
 
+def nova_receita(request):
+    return render(request, 'receitas/pages/nova_receita.html')
+
+
+def minhas_receitas(request):
+    return render(request, 'receitas/pages/minhas_receitas.html')

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'receitas/partials/head.html' %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'global/css/base_style.css' %}">
+
+    {%block extra_css%}{%endblock%}
+</head>
+<body>
+    {% include 'receitas/partials/header.html' %}
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    {% include 'receitas/partials/footer.html' %}
+</body>
+</html>

@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
 {% block extra_css %}
@@ -7,46 +6,48 @@
 {% endblock %}
 
 {% block content %}
-    <main class="main">
-        <div class="pesquisa">
-            <form action="">
-                <input type="search" class="input-pesquisa" placeholder="Pesquisar receitas...">
-                <input type="submit" class="submit" value="Buscar">
-            </form>
-        </div>
+<main class="main">
+    <div class="pesquisa">
+        <form action="">
+            <input type="search" class="input-pesquisa" placeholder="Pesquisar receitas...">
+            <input type="submit" class="submit" value="Buscar">
+        </form>
+    </div>
 
-        <div class="receitas">
-            <div class="receita">
-                <div class="receita-imagem">
-                    <img src="{% static 'img/image.png' %}" alt="bolo de chocolate">
-                </div>
-                <div class="info_receita">
-                    <h2>Bolo de Chocolate Cremoso</h2>
-                    <div class="info-receita-container">
-                        <p><i class="fa-regular fa-user"></i> Davi Guedes</p>
-                        <p><i class="fa-regular fa-calendar"></i> 06/11/2006 às 13h45</p>
-                        <p><i class="fa-solid fa-layer-group"></i> Bolos</p>
-                    </div>
-                </div>
-                <div class="descricao-receitas">
-                    <p>
-                        Um bolo de chocolate fofinho e úmido, coberto com ganache cremoso. 
-                        Perfeito para aniversários e ocasiões especiais.
-                    </p>
-                </div>
-                <div class="info-receita-footer">
-                    <div class="info-adicionais">
-                        <h3><i class="fa-regular fa-clock"></i>Preparo</h3>
-                        <h4>1h</h4>
-                    </div>
-                    <div class="info-adicionais">
-                        <h3><i class="fa-solid fa-cookie-bite"></i>Porções</h3>
-                        <h4>10</h4>
-                    </div>
-                </div>
-                <a href="/receita/1" class="receita-btn">Ver Receita</a>
+    <!-- Container único -->
+    <div class="receitas">
+        {% for recipe in receitas %}
+        <div class="receita">
+            <div class="receita-imagem">
+                <img src="{{ recipe.cover.url }}" alt="bolo de chocolate">
             </div>
+            <div class="info_receita">
+                <h2>{{ recipe.title }}</h2>
+                <div class="info-receita-container">
+                    <p><i class="fa-regular fa-user"></i> {{ recipe.author.first_name }} {{ recipe.author.last_name }}</p>
+                    <p><i class="fa-regular fa-calendar"></i> {{ recipe.created_at }}</p>
+                    <p><i class="fa-solid fa-layer-group"></i> {{ recipe.category.name }}</p>
+                </div>
+            </div>
+            <div class="descricao-receitas">
+                <p>
+                    Um bolo de chocolate fofinho e úmido, coberto com ganache cremoso. 
+                    Perfeito para aniversários e ocasiões especiais.
+                </p>
+            </div>
+            <div class="info-receita-footer">
+                <div class="info-adicionais">
+                    <h3><i class="fa-regular fa-clock"></i>Preparo</h3>
+                    <h4>1h</h4>
+                </div>
+                <div class="info-adicionais">
+                    <h3><i class="fa-solid fa-cookie-bite"></i>Porções</h3>
+                    <h4>10</h4>
+                </div>
+            </div>
+            <a href="/receita/1" class="receita-btn">Ver Receita</a>
         </div>
-    </main>
-
+        {% endfor %}
+    </div>
+</main>
 {% endblock %}

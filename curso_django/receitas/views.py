@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
 from .utils.receitas.inject import make_recipe
+from receitas.models import tb_receitas
 
 
 def register(request):
@@ -12,8 +13,9 @@ def login(request):
     return render(request, 'receitas/pages/login.html')
 
 def home(request):
+    recipe = tb_receitas.objects.all()
     return render(request, 'receitas/pages/index.html', context={
-        'receitas': [make_recipe() for _ in range(10)]
+        'receitas': recipe
     })
 
 def receita(request, id):

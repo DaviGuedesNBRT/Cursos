@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -19,33 +19,30 @@
         {% for recipe in receitas %}
         <div class="receita">
             <div class="receita-imagem">
-                <img src="{{ recipe.cover.url }}" alt="bolo de chocolate">
+                <img src="{{ recipe.rec_imagem.url }}" alt="{{ recipe.rec_nome }}">
             </div>
             <div class="info_receita">
-                <h2>{{ recipe.title }}</h2>
+                <h2>{{ recipe.rec_nome }}</h2>
                 <div class="info-receita-container">
-                    <p><i class="fa-regular fa-user"></i> {{ recipe.author.first_name }} {{ recipe.author.last_name }}</p>
-                    <p><i class="fa-regular fa-calendar"></i> {{ recipe.created_at }}</p>
-                    <p><i class="fa-solid fa-layer-group"></i> {{ recipe.category.name }}</p>
+                    <p><i class="fa-regular fa-user"></i> {{ recipe.rec_user_id.username }}</p>
+                    <p><i class="fa-regular fa-calendar"></i> {{ recipe.rec_data_criacao|date:"d/m/Y" }}</p>
+                    <p><i class="fa-solid fa-layer-group"></i> {{ recipe.rec_categoria.cat_nome }}</p>
                 </div>
             </div>
             <div class="descricao-receitas">
-                <p>
-                    Um bolo de chocolate fofinho e úmido, coberto com ganache cremoso. 
-                    Perfeito para aniversários e ocasiões especiais.
-                </p>
+                <p>{{ recipe.rec_descricao }}</p>
             </div>
             <div class="info-receita-footer">
                 <div class="info-adicionais">
-                    <h3><i class="fa-regular fa-clock"></i>Preparo</h3>
-                    <h4>1h</h4>
+                    <h3><i class="fa-regular fa-clock"></i> Preparo</h3>
+                    <h4>{{ recipe.rec_tempo_preparo }} min</h4>
                 </div>
                 <div class="info-adicionais">
-                    <h3><i class="fa-solid fa-cookie-bite"></i>Porções</h3>
-                    <h4>10</h4>
+                    <h3><i class="fa-solid fa-cookie-bite"></i> Porções</h3>
+                    <h4>{{ recipe.rec_rendimento }}</h4>
                 </div>
             </div>
-            <a href="/receita/1" class="receita-btn">Ver Receita</a>
+            <a href="{% url 'Receitas-detail' recipe.rec_id %}" class="receita-btn">Ver Receita</a>
         </div>
         {% endfor %}
     </div>

@@ -14,6 +14,9 @@
         </form>
     </div>
 
+    <!-- adicionar aqui um filtro por categorias para substituir uma pagina que apenas serviria de filtro
+     para as categorias-->
+
     <!-- Container único -->
     <div class="receitas">
         {% for recipe in receitas %}
@@ -24,9 +27,26 @@
             <div class="info_receita">
                 <h2>{{ recipe.rec_nome }}</h2>
                 <div class="info-receita-container">
-                    <p><i class="fa-regular fa-user"></i> {{ recipe.rec_user_id.username }}</p>
-                    <p><i class="fa-regular fa-calendar"></i> {{ recipe.rec_data_criacao|date:"d/m/Y" }}</p>
-                    <p><i class="fa-solid fa-layer-group"></i> {{ recipe.rec_categoria.cat_nome }}</p>
+
+                    <p>
+                        <i class="fa-regular fa-user"></i> 
+                        {% if recipe.rec_user_id.first_name and recipe.rec_user_id.last_name %}
+                        {{ recipe.rec_user_id.first_name }} {{ recipe.rec_user_id.last_name }}
+                        {% else %}
+                        {{ recipe.rec_user_id.username }}
+                        {% endif %}
+                    </p>
+
+                    <p>
+                        <i class="fa-regular fa-calendar"></i> 
+                        {{ recipe.rec_data_criacao|date:"d/m/Y" }}
+                    </p>
+
+                    <a href="{% url 'Receitas-home' %}?categoria={{ recipe.rec_categoria.cat_id }}" 
+                    class="categoria-link">
+                        <i class="fa-solid fa-layer-group"></i> {{ recipe.rec_categoria.cat_nome }}
+                    </a>
+
                 </div>
             </div>
             <div class="descricao-receitas">

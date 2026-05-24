@@ -1,5 +1,10 @@
-<!-- receitas/templates/receitas/partials/header.html -->
 <header class="main-header-container">
+    <menu>
+        <i class="fa-solid fa-bars menu-toggle"></i>
+        <ul>
+            <li><a href="{% url 'Receitas-nova-receita' %}">Nova Receita</a></li>
+        </ul>
+    </menu>
     <div class="main-header container">
         <h1>
             <a href="{% url 'Receitas-home' %}" class="main-logo">

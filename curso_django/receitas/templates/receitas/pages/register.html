@@ -11,7 +11,7 @@
     <div class="painel">
         <h1>Registro de Usuário</h1>
         <div class="formulario">
-            <form action="{% url 'register' %}" method="post">
+            <form action="{% url 'Receitas-register' %}" method="post">
                 {% csrf_token %}
                 <label for="email">Email:</label>
                 <input type="email" name="email">

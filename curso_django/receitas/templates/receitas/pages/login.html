@@ -10,7 +10,7 @@
     <div class="painel">
         <h1>Login</h1>
         <div class="formulario">
-            <form action="{% url 'login' %}" method="post">
+            <form action="{% url 'Receitas-login' %}" method="post">
                 {% csrf_token %}
                 <label for="email">Email:</label>
                 <input type="email" name="email">

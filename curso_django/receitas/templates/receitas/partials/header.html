@@ -1,9 +1,13 @@
+{% load static %}
+<script src="{% static 'js/sidebar.js' %}"></script>
+<link rel="stylesheet" href="{% static 'global/css/header.css' %}">
+
+
 <header class="main-header-container">
     <menu>
-        <i class="fa-solid fa-bars menu-toggle"></i>
-        <ul>
-            <li><a href="{% url 'Receitas-nova-receita' %}">Nova Receita</a></li>
-        </ul>
+        {%if request.resolver_match.url_name != 'Receitas-login' and request.resolver_match.url_name != 'Receitas-register' %}
+        <i class="fa-solid fa-bars menu-toggle" id="sidebar-open-btn"></i>
+        {% endif %}
     </menu>
     <div class="main-header container">
         <h1>
@@ -14,3 +18,21 @@
         </h1>
     </div>
 </header>
+
+{% if request.resolver_match.url_name != 'Receitas-login' and request.resolver_match.url_name != 'Receitas-register' %}
+<aside class="recipe-sidebar" id="recipe-sidebar">
+    <div class="sidebar-header">
+        <h2>Navegação</h2>
+        <!-- Ícone do Font Awesome para fechar -->
+        <i class="fa-solid fa-xmark menu-close" id="sidebar-close-btn"></i>
+    </div>
+    <nav class="sidebar-links">
+        <a href="{% url 'Receitas-home' %}">Início</a>
+        <a href="{% url 'Receitas-nova-receita' %}">Nova Receita</a>
+    </nav>
+</aside>
+
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+{% endif %}
+
+

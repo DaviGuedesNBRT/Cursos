@@ -6,64 +6,97 @@
 {% endblock %}
 
 {% block content %}
-<main class="main">
+<main class="main container"> <!-- Adicionado container para alinhar com o restante do site -->
+    
+    <!-- ÁREA DE PESQUISA E FILTRAGEM ADAPTADA -->
     <div class="pesquisa">
-        <form action="">
-            <input type="search" class="input-pesquisa" placeholder="Pesquisar receitas...">
-            <input type="submit" class="submit" value="Buscar">
+        <form action="{% url 'Receitas-home' %}" method="get">
+            <!-- Campo de Texto de Busca -->
+            <input type="search" name="q" class="input-pesquisa" placeholder="Pesquisar receitas..." value="{{ request.GET.q }}">
+            
+            <!-- SELECT CORRIGIDO: Substituído <section> por <select> -->
+            <select name="categoria" class="select-categoria">
+                <option value="">Categorias</option>
+                {% for categoria in categorias %}
+                    <option value="{{ categoria.cat_id }}" {% if request.GET.categoria == categoria.cat_id|stringformat:"i" %}selected{% endif %}>
+                        {{ categoria.cat_nome }}
+                    </option>
+                {% endfor %}
+            </select>
+            
+            <!-- Botão Submit -->
+            <button type="submit" class="submit">
+                <i class="fa-solid fa-magnifying-glass"></i> Buscar
+            </button>
         </form>
     </div>
 
-    <!-- adicionar aqui um filtro por categorias para substituir uma pagina que apenas serviria de filtro
-     para as categorias-->
-
-    <!-- Container único -->
+    <!-- Container de Receitas -->
     <div class="receitas">
         {% for recipe in receitas %}
-        <div class="receita">
-            <div class="receita-imagem">
-                <img src="{{ recipe.rec_imagem.url }}" alt="{{ recipe.rec_nome }}">
-            </div>
-            <div class="info_receita">
-                <h2>{{ recipe.rec_nome }}</h2>
-                <div class="info-receita-container">
+            {% if recipe.rec_publicada == True %}
+            <div class="receita">
+                <div class="receita-imagem">
+                    <img src="{{ recipe.rec_imagem.url }}" alt="{{ recipe.rec_nome }}">
+                </div>
+                <div class="info_receita">
+                    <h2>{{ recipe.rec_nome }}</h2>
+                    <div class="info-receita-container">
 
-                    <p>
-                        <i class="fa-regular fa-user"></i> 
-                        {% if recipe.rec_user_id.first_name and recipe.rec_user_id.last_name %}
-                        {{ recipe.rec_user_id.first_name }} {{ recipe.rec_user_id.last_name }}
-                        {% else %}
-                        {{ recipe.rec_user_id.username }}
+                        <p>
+                            {% if recipe.autor is not None %}
+                                <i class="fa-regular fa-user"></i> 
+                                {% if recipe.rec_user_id.first_name and recipe.rec_user_id.last_name %}
+                                    {{ recipe.autor.first_name }} {{ recipe.autor.last_name }}
+                                {% else %}
+                                    {{ recipe.rec_user_id.username }}
+                                    {% endif %}
+                            {% endif %}
+                        </p>
+
+                        <p>
+                            <i class="fa-regular fa-calendar"></i> 
+                            {{ recipe.rec_data_criacao|date:"d/m/Y" }}
+                        </p>
+                        {% if recipe.rec_categoria is not none %}
+                        <a href="{% url 'Receitas-home' %}?categoria={{ recipe.rec_categoria.cat_id }}" 
+                        class="categoria-link">
+                            <i class="fa-solid fa-layer-group"></i> 
+                            {{ recipe.rec_categoria.cat_nome }}
+                        </a>
                         {% endif %}
-                    </p>
-
-                    <p>
-                        <i class="fa-regular fa-calendar"></i> 
-                        {{ recipe.rec_data_criacao|date:"d/m/Y" }}
-                    </p>
-
-                    <a href="{% url 'Receitas-home' %}?categoria={{ recipe.rec_categoria.cat_id }}" 
-                    class="categoria-link">
-                        <i class="fa-solid fa-layer-group"></i> {{ recipe.rec_categoria.cat_nome }}
-                    </a>
-
+                    </div>
                 </div>
-            </div>
-            <div class="descricao-receitas">
-                <p>{{ recipe.rec_descricao }}</p>
-            </div>
-            <div class="info-receita-footer">
-                <div class="info-adicionais">
-                    <h3><i class="fa-regular fa-clock"></i> Preparo</h3>
-                    <h4>{{ recipe.rec_tempo_preparo }} min</h4>
+                <div class="descricao-receitas">
+                    <p>{{ recipe.rec_descricao }}</p>
                 </div>
-                <div class="info-adicionais">
-                    <h3><i class="fa-solid fa-cookie-bite"></i> Porções</h3>
-                    <h4>{{ recipe.rec_rendimento }}</h4>
+                <div class="info-receita-footer">
+                    <div class="info-adicionais">
+                        <h3><i class="fa-regular fa-clock"></i> Preparo</h3>
+                        <h4>{{ recipe.rec_tempo_preparo }} min</h4>
+                    </div>
+                    <div class="info-adicionais">
+                        <h3><i class="fa-solid fa-cookie-bite"></i> Porções</h3>
+                        <h4>{{ recipe.rec_rendimento }}</h4>
+                    </div>
                 </div>
+                <a href="{% url 'Receitas-detail' recipe.rec_id %}" class="receita-btn">Ver Receita</a>
             </div>
-            <a href="{% url 'Receitas-detail' recipe.rec_id %}" class="receita-btn">Ver Receita</a>
-        </div>
+            {% else %}
+
+            {% if recipe == receitas.last %}
+                <div class="sem-receitas">
+                    <p>Nenhuma receita encontrada para o filtro aplicado.</p>
+                </div>
+                {% endif %}
+            {% endif %}
+
+        {% empty %}
+        
+            <div class="sem-receitas">
+                <p>Nenhuma receita encontrada para o filtro aplicado.</p>
+            </div>
+        
         {% endfor %}
     </div>
 </main>

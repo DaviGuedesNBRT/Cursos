@@ -17,7 +17,7 @@ class tb_receitas(models.Model):
     rec_tempo_preparo = models.IntegerField()
     rec_rendimento = models.IntegerField()
     
-    rec_categoria = models.ForeignKey(tb_categorias, on_delete=models.SET_NULL, null=True)
+    rec_categoria = models.ForeignKey(tb_categorias, on_delete=models.SET_NULL, null=True, blank=True, default=None) 
     rec_imagem = models.ImageField(upload_to='receitas/imagens/')
     rec_data_criacao = models.DateTimeField(auto_now_add=True)
     

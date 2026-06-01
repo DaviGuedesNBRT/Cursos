@@ -1,6 +1,9 @@
 {% load static %}
 <script src="{% static 'js/sidebar.js' %}"></script>
-<link rel="stylesheet" href="{% static 'global/css/header.css' %}">
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'global/css/header.css' %}">
+{% endblock %}
 
 
 <header class="main-header-container">
@@ -29,6 +32,8 @@
     <nav class="sidebar-links">
         <a href="{% url 'Receitas-home' %}">Início</a>
         <a href="{% url 'Receitas-nova-receita' %}">Nova Receita</a>
+        <a href="">Minhas Receitas</a>
+        <a href="">Favoritas</a>
     </nav>
 </aside>
 

@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{%load static%}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/nova_receita.css' %}">
+{% endblock %}
+
+{%block content %}
+<div class="container">
+    <div class="conteudo">
+        <h1>Nova Receita</h1>
+        <form method="post" enctype="multipart/form-data">
+            <label for="titulo">Titulo :</label>
+            <input type="text" name="titulo">
+
+            <label for="nome">Nome :</label>
+            <input type="text" name="nome">
+
+            <label for="descricao">Descrição :</label>
+            <textarea name="descricao"></textarea>
+
+            <label for="ingredientes">Ingredientes :</label>
+            <textarea name="ingredientes"></textarea>
+
+            <label for="modo_preparo">Modo de Preparo :</label>
+            <textarea name="modo_preparo"></textarea>
+
+            <label for="rendimento">Rendimento :</label>
+            <input type="text" name="rendimento">
+
+            <label for="tempo_preparo">Tempo de Preparo :</label>
+            <input type="text" name="tempo_preparo">
+
+            <label for="categoria">Categoria :</label>
+            <select name="categoria">
+                {% for categoria in categorias %}
+                    <option value="{{ categoria.cat_id }}">{{ categoria.cat_nome }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="imagem">Imagem :</label>
+            <input type="file" name="imagem">
+
+            <button type="submit">Salvar Receita</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+
+/* nova_receita.css */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    background-color: #d1d1d1;
+    font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.container h1 {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #13141f;
+    margin-bottom: 2rem;
+}
+
+form {
+    width: 70%;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    padding: 2.4rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+form label {
+    font-weight: 600;
+    color: #13141f;
+}
+
+form input[type="text"],
+form textarea,
+form select,
+form input[type="file"] {
+    padding: 1.4rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.4rem;
+    font-size: 1.6rem;
+    background-color: #fff;
+    transition: border-color 0.2s;
+}
+
+form input[type="text"]:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #13141f;
+    outline: none;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 10rem;
+}
+
+form button {
+    padding: 1.4rem;
+    background-color: #13141f;
+    color: #fff;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+form button:hover {
+    background-color: #333;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1024px) {
+    form {
+        width: 85%;
+    }
+}
+
+@media (max-width: 768px) {
+    form {
+        width: 100%;
+    }
+    .container h1 {
+        font-size: 2rem;
+    }
+}

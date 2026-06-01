@@ -20,13 +20,16 @@ def home(request):
     })
 
 def receita(request, id):
+    receita = tb_receitas.objects.filter(rec_id=id).first()
     return render(request, 'receitas/pages/receita.html', context={
-        'id': id
+        'receita': receita
     })
 
 def nova_receita(request):
     return render(request, 'receitas/pages/nova_receita.html')
 
-
 def minhas_receitas(request):
     return render(request, 'receitas/pages/minhas_receitas.html')
+
+def receitas_favoritas(request):
+    return render(request, 'receitas/pages/receitas_favoritas.html')

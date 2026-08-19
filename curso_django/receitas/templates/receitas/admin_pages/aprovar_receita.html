@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/admin/aprovar_receita.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="card">
+            <!-- Imagem da receita -->
+            <div class="imagem">
+                <img src="https://www.sabornamesa.com.br/media/k2/items/cache/eb800d55c6f0176e166b1567b2249535_XL.jpg" alt="{{ receita.rec_nome }}">
+            </div>
+
+            <!-- Conteúdo principal -->
+            <div class="conteudo">
+                <h1>{{ receita.rec_nome }}</h1>
+
+                <!-- Autor e data -->
+                <div class="sub-conteudo">
+                    {% if receita.rec_user_id %}
+                        <i class="fa-regular fa-user"></i>
+                        {% if receita.rec_user_id.first_name and receita.rec_user_id.last_name %}
+                            <h3>{{ receita.rec_user_id.first_name }} {{ receita.rec_user_id.last_name }}</h3>
+                        {% else %}
+                            <h3>{{ receita.rec_user_id.username }}</h3>
+                        {% endif %}
+                    {% endif %}
+
+                    <i class="fa-regular fa-calendar"></i>
+                    <h3>{{ receita.rec_data_criacao|date:"d/m/Y" }}</h3>
+                </div>
+
+                <!-- Categoria -->
+                {% if receita.rec_categoria %}
+                    <div class="categoria">
+                        <i class="fa-solid fa-tag"></i>
+                        <span>{{ receita.rec_categoria.cat_nome }}</span>
+                    </div>
+                {% endif %}
+
+                <!-- Descrição -->
+                <div class="descricao">
+                    <h2>Descrição</h2>
+                    <p>{{ receita.rec_descricao }}</p>
+                </div>
+
+                <!-- Ingredientes -->
+                <div class="ingredientes">
+                    <h2>Ingredientes</h2>
+                    <p>{{ receita.rec_ingredientes|linebreaks }}</p>
+                </div>
+
+                <!-- Modo de preparo -->
+                <div class="modo-preparo">
+                    <h2>Modo de Preparo</h2>
+                    <p>{{ receita.rec_modo_preparo|linebreaks }}</p>
+                </div>
+
+                <!-- Informações adicionais -->
+                <div class="info-extra">
+                    <p><strong>Tempo de preparo:</strong> {{ receita.rec_tempo_preparo }} minutos</p>
+                    <p><strong>Rendimento:</strong> {{ receita.rec_rendimento }} porções</p>
+                </div>
+                <div class="aprovar">
+                    <button>Aprovar</button>
+                    <button>Rejeitar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

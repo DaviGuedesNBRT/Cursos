@@ -33,3 +33,15 @@ def minhas_receitas(request):
 
 def receitas_favoritas(request):
     return render(request, 'receitas/pages/receitas_favoritas.html')
+
+def receitas_pendentes(request):
+    recipe = tb_receitas.objects.all()
+    return render(request, 'receitas/admin_pages/receitas_pendentes.html', context={
+        'receitas': recipe
+    })
+
+def aprovar_receita(request, id):
+    receita = tb_receitas.objects.filter(rec_id=id).first()
+    return render(request, 'receitas/admin_pages/aprovar_receita.html', context={
+        'receita': receita
+    })

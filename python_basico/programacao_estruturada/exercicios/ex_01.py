@@ -17,3 +17,4 @@ n5 = int(input("digite um numero :"))
 n6 = int(input("digite um numero :"))
 print(f" os quadrados dos números digitados são {n4*n4}, {n5*n5}, {n6*n6}")
 
+for i in range()

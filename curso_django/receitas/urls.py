@@ -1,6 +1,8 @@
 from django.urls import path
 from receitas import views
 
+app_name = "Receitas"
+
 urlpatterns = [
     path('', views.home, name='Receitas-home'),
     path('register/', views.register, name='Receitas-register'),

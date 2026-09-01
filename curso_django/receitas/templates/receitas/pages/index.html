@@ -11,7 +11,7 @@
     
     <!-- ÁREA DE PESQUISA E FILTRAGEM ADAPTADA -->
     <div class="pesquisa">
-        <form action="{% url 'Receitas-home' %}" method="get">
+        <form action="{% url 'Receitas:Receitas-home' %}" method="get">
             <!-- Campo de Texto de Busca -->
             <input type="search" name="q" class="input-pesquisa" placeholder="Pesquisar receitas..." value="{{ request.GET.q }}">
             
@@ -60,7 +60,7 @@
                             {{ recipe.rec_data_criacao|date:"d/m/Y" }}
                         </p>
                         {% if recipe.rec_categoria is not none %}
-                        <a href="{% url 'Receitas-home' %}?categoria={{ recipe.rec_categoria.cat_id }}" 
+                        <a href="{% url 'Receitas:Receitas-home' %}?categoria={{ recipe.rec_categoria.cat_id }}" 
                         class="categoria-link">
                             <i class="fa-solid fa-layer-group"></i> 
                             {{ recipe.rec_categoria.cat_nome }}
@@ -81,7 +81,7 @@
                         <h4>{{ recipe.rec_rendimento }}</h4>
                     </div>
                 </div>
-                <a href="{% url 'Receitas-detail' recipe.rec_id %}" class="receita-btn">Ver Receita</a>
+                <a href="{% url 'Receitas:Receitas-detail' recipe.rec_id %}" class="receita-btn">Ver Receita</a>
             </div>
             {% else %}
 

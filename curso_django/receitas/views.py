@@ -32,7 +32,7 @@ def minhas_receitas(request):
     return render(request, 'receitas/pages/minhas_receitas.html')
 
 def receitas_favoritas(request):
-    return render(request, 'receitas/pages/receitas_favoritas.html')
+    return render(request, 'receitas/pages/favoritas.html')
 
 def receitas_pendentes(request):
     recipe = tb_receitas.objects.all()

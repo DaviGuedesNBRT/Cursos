@@ -36,7 +36,7 @@
                             {{ recipe.rec_data_criacao|date:"d/m/Y" }}
                         </p>
                         {% if recipe.rec_categoria is not none %}
-                        <a href="{% url 'Receitas-home' %}?categoria={{ recipe.rec_categoria.cat_id }}" 
+                        <a href="{% url 'Receitas:Receitas-home' %}?categoria={{ recipe.rec_categoria.cat_id }}" 
                         class="categoria-link">
                             <i class="fa-solid fa-layer-group"></i> 
                             {{ recipe.rec_categoria.cat_nome }}
@@ -57,7 +57,7 @@
                         <h4>{{ recipe.rec_rendimento }}</h4>
                     </div>
                 </div>
-                <a href="{% url 'Receitas-aprovar-receita' recipe.rec_id %}" class="receita-btn">Ver Receita</a>
+                <a href="{% url 'Receitas:Receitas-aprovar-receita' recipe.rec_id %}" class="receita-btn">Ver Receita</a>
             </div>
             {% else %}
 

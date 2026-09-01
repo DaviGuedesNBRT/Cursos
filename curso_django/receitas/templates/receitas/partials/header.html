@@ -14,7 +14,7 @@
     </menu>
     <div class="main-header container">
         <h1>
-            <a href="{% url 'Receitas-home' %}" class="main-logo">
+            <a href="{% url 'Receitas:Receitas-home' %}" class="main-logo">
                 <i class="fas fa-utensils main-logo-icon"></i>
                 <span class="main-logo-text">Receitas</span>
             </a>
@@ -30,8 +30,8 @@
         <i class="fa-solid fa-xmark menu-close" id="sidebar-close-btn"></i>
     </div>
     <nav class="sidebar-links">
-        <a href="{% url 'Receitas-home' %}">Início</a>
-        <a href="{% url 'Receitas-nova-receita' %}">Nova Receita</a>
+        <a href="{% url 'Receitas:Receitas-home' %}">Início</a>
+        <a href="{% url 'Receitas:Receitas-nova-receita' %}">Nova Receita</a>
         <a href="">Minhas Receitas</a>
         <a href="">Favoritas</a>
     </nav>
